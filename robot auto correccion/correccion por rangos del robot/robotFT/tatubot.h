@@ -87,6 +87,8 @@ class Robot {
     void girarDerecha(int velocidad2);
     void girarIzquierda(int velocidad);
     void pararRobot();
+    void frenar();
+    void frenarAvance(int velocidad, int velocidad2);
     void escucharOrdenes();
     void ejecutarTodasLasOrdenes();
     void ejecutarOrden(byte caso);

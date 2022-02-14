@@ -58,7 +58,7 @@ void Robot::avanzar(int velocidad, int velocidad2) {
       pararRobot();
   }
   delay (2000);
-  for(int ciclo=0; ciclo<40; ciclo++)
+  for(int ciclo=0; ciclo<80; ciclo++)
   {
       motor0.adelante(velocidad);
       motor1.adelante(velocidad2);
@@ -181,11 +181,27 @@ void Robot::pararRobot() {
   led2.rgb('a');
 }
 
-void Robot::frenarAdelante() {
-  motor0.atras();
-  motor1.atras();
-  led1.rgb('a');
-  led2.rgb('a');
+void Robot::frenar() {
+  while (VELOCIDAD_MOTOR0 > 0 && VELOCIDAD_MOTOR1 > 0) {
+      VELOCIDAD_MOTOR0 - 5;
+      VELOCIDAD_MOTOR1 - 15;
+      led1.rgb('r');
+      led2.rgb('r');
+  }
+  pararRobot();
+}
+
+void Robot::frenarAvance(int velocidad, int velocidad2) {
+  for(int ciclo = 0; ciclo < 35; ciclo++) {
+      VELOCIDAD_MOTOR0 - 5;
+      VELOCIDAD_MOTOR1 - 15;
+      motor0.atras(velocidad);
+      motor1.atras(velocidad2);
+      delay (3);
+      led1.rgb('r');
+      led2.rgb('r');
+  }
+  pararRobot();
 }
 
 void Robot::compararYCorregir() {
